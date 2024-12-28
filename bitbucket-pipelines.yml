@@ -1,0 +1,50 @@
+# This is a sample build configuration for Ruby.
+# Check our guides at https://confluence.atlassian.com/x/8r-5Mw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+
+pipelines:
+  default:
+    - parallel:
+      - step:
+          name: 2.4.1 ruby
+          image: ruby:2.4.1
+          script:
+            - sed -i "s/'sqlite3'/'sqlite3', '~> 1.3.6'/g" redmineup.gemspec
+            - sed -i "s/'mysql2'/'mysql2', '~> 0.4.0'/g" redmineup.gemspec
+            - sed -i "s/'rubyzip'/'rubyzip'\n  spec.add_runtime_dependency 'loofah', '~>2.19.1'/g" redmineup.gemspec
+            - bundle install
+            - bundle exec rake test DB=sqlite
+            - bundle exec rake test DB=postgresql
+            - bundle exec rake test DB=mysql
+          services:
+            - mysql
+            - postgres
+      - step:
+          name: 3.2.2 ruby
+          image: ruby:3.2.2
+          script:
+            - sed -i "s/'sqlite3'/'sqlite3', '~> 1.4.4'/g" redmineup.gemspec
+            - sed -i "s/'mysql2'/'mysql2', '~> 0.5.0'/g" redmineup.gemspec
+            - sed -i "s/'rubyzip'/'rubyzip'\n  spec.add_runtime_dependency 'loofah', '~>2.19.1'/g" redmineup.gemspec
+            - bundle install
+            - bundle exec rake test DB=sqlite
+            - bundle exec rake test DB=postgresql
+            - bundle exec rake test DB=mysql
+          services:
+            - mysql
+            - postgres
+
+definitions:
+  services:
+    mysql:
+      image: mysql:5.7
+      environment:
+        MYSQL_DATABASE: redmineup_test
+        MYSQL_ROOT_PASSWORD: password
+    postgres:
+      image: postgres
+      environment:
+        POSTGRES_DB: redmineup_test
+        POSTGRES_PASSWORD: password

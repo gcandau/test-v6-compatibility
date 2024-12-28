@@ -1,0 +1,13 @@
+de:
+  label_redmineup_settings: Währungseinstellungen
+  label_redmineup_money: Währung
+
+  label_redmineup_disable_taxes: Steuern deaktiviert
+  label_redmineup_default_tax: Standard Steuersatz
+  label_redmineup_tax_type: Steuerart
+  label_redmineup_tax_type_exclusive: Steuer ausgeschlossen
+  label_redmineup_tax_type_inclusive: Steuer eingeschlossen
+  label_redmineup_default_currency: Standard Währung
+  label_redmineup_major_currencies: Aktive Währungen
+  label_redmineup_thousands_delimiter: Tausendertrennzeichen
+  label_redmineup_decimal_separator: Dezimaltrennzeichen

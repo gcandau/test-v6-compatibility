@@ -1,0 +1,26 @@
+== Redmine UP gem changelog
+
+Redmine UP gem - general functions for plugins (tags, vote, viewing, currency)
+Copyright (C) 2011-2024 Kirill Bezrukov (RedmineUP)
+https://www.redmineup.com/
+
+== 2024-05-07 v1.0.6
+
+* Updated Chart.js to v3.9.1
+* Fixed assets paths for Redmine 5.3+
+* Added attachments to IssueDrop and JournalDrop
+* Added filter parse_inline_attachments for replace image urls
+
+== 2024-01-31 v1.0.5
+
+* Added plugin_installed? method
+* Compatibility patches for ApplicationRecord
+
+== 2023-10-12 v1.0.1
+
+* RedmineUp module renamed to Redmineup
+
+== 2023-09-27 v1.0.0
+
+* Initial release
+* Mirgated from redmineup gem
